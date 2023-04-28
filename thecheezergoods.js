@@ -3,10 +3,11 @@ class Begin extends Phaser.Scene {
         super('begin')
     }
     preload() {
-        this.load.path = './images/';
-        this.load.image('beginningBG', 'GreenGradient.png')
+        this.load.path = './assets/';
+        this.load.image('beginningBG', 'GreenGradient.png');
     }
     create() {
+        
         // Add Gradient Background
         this.imageObject = this.add.image(
             480,
@@ -18,8 +19,7 @@ class Begin extends Phaser.Scene {
             0,
             "Click to begin...", //text
             {
-                font: "40px Arial",
-                color: "#000000",
+                fontFamily: 'joystixmonospace'
             } //style
         );
         this.input.on('pointerdown', () => {
