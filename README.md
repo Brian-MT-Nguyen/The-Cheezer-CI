@@ -17,7 +17,7 @@ For all these audio assets, I used audacity and recorded real life sound effects
   * FridgeOpen.wav
 * 2+ image assets (such as .png files)\
 For all these image assets, I used illustrator and live painted pixel art except for the fridges.\
-For the fridges, I took it from https://www.vecteezy.com/vector-art/5146413-refrigerator-pixel-art and changed it from white to green in illustrator (same live paint technique).
+For the fridges, I took it from https://www.vecteezy.com/vector-art/5146413-refrigerator-pixel-art and changed it from white to green in illustrator (same live paint technique) and modified it further for the half opened and opened images.
   * CheeseSlice.png
   * GreenFridgeClosed.png
   * GreenFridgeHalfOpened.png
@@ -44,4 +44,4 @@ For this logotype text, I used illustrator and live painted pixel art.
   * Cheese flying
   * and more
 
-The 2 contributors are both me, just personal vs school github. Also this list has most but not all places that satisfies the requirements.
+The 2 contributors are both me, just personal vs school github. Also this list has most but not all places that satisfies the requirements, but still shows enough to satisfy all categories.
