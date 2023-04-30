@@ -81,7 +81,7 @@ class StudioIntro extends Phaser.Scene {
     }
     create() {
         let studioText = this.add.text(
-            530,
+            520,
             400,
             "Green\nCheeze\nStudios",
             {
@@ -216,11 +216,11 @@ class CinematicMenu extends Phaser.Scene {
         cbRShape.fillEllipse(840, 350, 200, 100);
  
         // Add text to the right chat bubble
-        let cbRText = this.add.text(770, 330, "Because I'm The Cheezer!", {
+        let cbRText = this.add.text(787, 325, "Because I'm The Cheezer!", {
             fontFamily: 'Impact',
             fontSize: 20,
             color: '#000000',
-            wordWrap: { width: 150 },
+            wordWrap: { width: 120 },
             align: 'center'
         });
  
@@ -232,35 +232,44 @@ class CinematicMenu extends Phaser.Scene {
 
         // Load play text
         let playText = this.add.text(300, 400, "PLAY", {
-            fontFamily: 'Impact',
-            fontSize: 40,
+            fontFamily: "'Press Start 2P', sans-serif",
+            fontWeight: 400,
+            fontStyle: 'normal',
+            fontSize: 30,
             color: '#F9E93C'
         });
         playText.alpha = 0;
 
         // Load settings text
         let settingsText = this.add.text(300, 490, "SETTINGS", {
-            fontFamily: 'Impact',
-            fontSize: 40,
+            fontFamily: "'Press Start 2P', sans-serif",
+            fontWeight: 400,
+            fontStyle: 'normal',
+            fontSize: 30,
             color: '#F9E93C'
         });
         settingsText.alpha = 0;
 
         // Load quit text
         let quitText = this.add.text(300, 580, "QUIT", {
-            fontFamily: 'Impact',
-            fontSize: 40,
+            fontFamily: "'Press Start 2P', sans-serif",
+            fontWeight: 400,
+            fontStyle: 'normal',
+            fontSize: 30,
             color: '#F9E93C'
         });
         quitText.alpha = 0;
 
         // Load Not Implemented text
-        let notImpText = this.add.text(480, 390, "Feature Not Implemented...", {
-            fontFamily: 'Impact',
-            fontSize: 30,
-            wordWrap: { width: 150 },
+        let notImpText = this.add.text(480, 70, "Feature Not Implemented...", {
+            fontFamily: "'Press Start 2P', sans-serif",
+            fontWeight: 400,
+            fontStyle: 'normal',
+            fontSize: 20,
+            wordWrap: { width: 250 },
             color: '#FFFFFF'
         });
+        notImpText.setOrigin(0.5,0.5);
         notImpText.visible = false;
 
         // Do the cheeseSlap and every other animation
@@ -321,7 +330,10 @@ class CinematicMenu extends Phaser.Scene {
                                         });
 
                                         playText.on('pointerdown', () => {
-                                            this.scene.start('gameplay');
+                                            this.cameras.main.fadeOut(1000, 0, 0, 0);
+                                            this.cameras.main.once(Phaser.Cameras.Scene2D.Events.FADE_OUT_COMPLETE, () => {
+                                                this.scene.start('gameplay');
+                                            });
                                         });
                                         
                                         settingsText.setInteractive();
@@ -404,10 +416,117 @@ class Gameplay extends Phaser.Scene {
         super('gameplay')
     }
     preload() {
-
+        this.load.script('webfont', 'https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js');
+        this.load.path = './assets/';
+        this.load.image('cheese', 'CheeseSlice.png');
+        this.cameras.main.fadeIn(1000, 0, 0, 0);
     }
     create() {
+        this.cameras.main.setBackgroundColor('#FEFD98');
 
+        let grass = this.add.rectangle(480, 620, 960, 200, 0x265d07);
+
+        let cheeseTop = this.add.sprite(-104, 110, 'cheese'); 
+        cheeseTop.setScale(0.15);
+        cheeseTop.rotation = Phaser.Math.DegToRad(335);
+
+        let cheeseMiddle = this.add.sprite(-104, 260, 'cheese');
+        cheeseMiddle.setScale(0.15);
+        cheeseMiddle.rotation = Phaser.Math.DegToRad(335);
+
+        let cheeseBottom = this.add.sprite(-104, 410, 'cheese');
+        cheeseBottom.setScale(0.15);
+        cheeseBottom.rotation = Phaser.Math.DegToRad(335);
+
+        let topTextRect = this.add.rectangle(240, 110, 300, 70, 0xffffff);
+        topTextRect.setStrokeStyle(2, 0x000000);
+        let topText = this.add.text(240, 110, "I'M", {
+            fontFamily: 'Impact',
+            fontSize: 40,
+            color: '#000000',
+            align: 'center'
+        });
+        topText.setOrigin(0.5,0.5);
+        topTextRect.visible = false;
+        topText.visible = false;
+
+        let middleTextRect = this.add.rectangle(480, 260, 300, 70, 0xffffff);
+        middleTextRect.setStrokeStyle(2, 0x000000);
+        let middleText = this.add.text(480, 260, "THE", {
+            fontFamily: 'Impact',
+            fontSize: 40,
+            color: '#000000',
+            align: 'center'
+        });
+        middleText.setOrigin(0.5,0.5);
+        middleTextRect.visible = false;
+        middleText.visible = false;
+
+        let bottomTextRect = this.add.rectangle(720, 410, 300, 70, 0xffffff);
+        bottomTextRect.setStrokeStyle(2, 0x000000);
+        let bottomText = this.add.text(720, 410, "CHEEZER", {
+            fontFamily: 'Impact',
+            fontSize: 40,
+            color: '#000000',
+            align: 'center'
+        });
+        bottomText.setOrigin(0.5,0.5);
+        bottomTextRect.visible = false;
+        bottomText.visible = false;
+
+        let theEndText = this.add.text(480, 620, "THE END", {
+            fontFamily: "'Press Start 2P', sans-serif",
+            fontWeight: 400,
+            fontStyle: 'normal',
+            fontSize: 40,
+            color: '#ffffff',
+            align: 'center'
+        });
+        theEndText.setOrigin(0.5,0.5);
+        theEndText.alpha = 0;
+
+        this.cameras.main.once(Phaser.Cameras.Scene2D.Events.FADE_IN_COMPLETE, () => {
+            this.tweens.add({
+                targets: cheeseTop,
+                x: 1064,
+                duration: 500
+            });
+            this.time.delayedCall(500, () => {
+                topTextRect.visible = true;
+                topText.visible = true;
+            });
+            this.time.delayedCall(1000, () => {
+                this.tweens.add({
+                    targets: cheeseMiddle,
+                    x: 1064,
+                    duration: 500
+                });
+                this.time.delayedCall(500, () => {
+                    middleTextRect.visible = true;
+                    middleText.visible = true;
+                });
+            });
+            this.time.delayedCall(2000, () => {
+                this.tweens.add({
+                    targets: cheeseBottom,
+                    x: 1064,
+                    duration: 500
+                });
+                this.time.delayedCall(500, () => {
+                    bottomTextRect.visible = true;
+                    bottomText.visible = true;
+                });
+                this.time.delayedCall(500, () => {
+                    this.time.delayedCall(1000, () => {
+                        this.tweens.add({
+                            targets: theEndText,
+                            alpha: 1,
+                            duration: 500
+                        });
+                    });
+                });
+            });
+        });
     }
     update() {
 
@@ -420,7 +539,6 @@ let config = {
     height: 720,
     backgroundColor: 0x90ee90,
     scene: [Begin, StudioIntro, CinematicMenu, Gameplay]
-    //scene: [CinematicMenu, Gameplay]
 }
 
 let game = new Phaser.Game(config);
