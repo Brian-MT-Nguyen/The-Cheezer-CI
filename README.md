@@ -16,7 +16,7 @@ For all these audio assets, I used audacity and recorded real life sound effects
   * FridgeClose.wav
   * FridgeOpen.wav
 * 2+ image assets (such as .png files)\
-For all these image assets, I used illustrator and live painted pixel art except for the fridges\
+For all these image assets, I used illustrator and live painted pixel art except for the fridges.\
 For the fridges, I took it from https://www.vecteezy.com/vector-art/5146413-refrigerator-pixel-art and changed it from white to green in illustrator (same live paint technique).
   * CheeseSlice.png
   * GreenFridgeClosed.png
